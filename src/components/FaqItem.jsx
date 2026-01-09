@@ -1,7 +1,5 @@
 import clsx from 'clsx'
 import React, { useState } from 'react'
-import { SlideDown } from 'react-slidedown';
-import 'react-slidedown/lib/slidedown.css'
 
 export default function FaqItem({ item, index }) {
     const [activeId, setActiveId] = useState(null);
@@ -39,11 +37,16 @@ export default function FaqItem({ item, index }) {
                     <div className='g4 size-11/12 rounded-full shadow-300' />
                 </div>
             </div>
-            <SlideDown>
+            <div
+                className={clsx(
+                    'overflow-hidden transition-all duration-500 ease-in-out px-7',
+                    active ? 'max-h-40 opacity-100 py-3.5' : 'max-h-0 opacity-0 py-0'
+                )}
+            >
                 {activeId === item.id && (
                     <div className='body-3 px-7 py-3.5'>{item.answer}</div>
                 )}
-            </SlideDown>
+            </div>
 
             <div 
                 className={clsx(
